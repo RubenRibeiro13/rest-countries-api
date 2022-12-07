@@ -1,0 +1,55 @@
+<%- include("header") -%>
+
+<main class="main-section-detail">
+  <a class="back-button element-dark-mode" href="/home">
+    <img src="/images/back-dark-mode.png" alt="Back image">
+    Back
+  </a>
+
+  <div class="clicked-country-container">
+    <img class="clicked-country-flag element-dark-mode" src="<%= clicked_country.flags.png %>" alt="<%= clicked_country.name.common %> flag">
+
+    <div class="clicked-country-info">
+      <p class="clicked-country-name"><%= clicked_country.name.common %></p>
+
+      <div class="clicked-country-detailed-info">
+        <ul>
+          <li>Native Name: <span><%= Object.values(clicked_country.name.nativeName)[0].common %></span></li>
+          <li>Population: <span><%= clicked_country.population %></span></li>
+          <li>Region: <span><%= clicked_country.region %></span></li>
+          <li>Sub Region: <span><%= clicked_country.subregion %></span></li>
+          <li>Capital: <span><%= clicked_country.capital[0] %></span></li>
+        </ul>
+
+        <ul>
+          <li>Top Level Domain: <span><%= clicked_country.tld[0] %></span></li>
+          <li>
+            Currencies:
+            <% for (let i = 0; i < Object.values(clicked_country.currencies).length - 1; i++) { %>
+              <span><%= Object.values(clicked_country.currencies)[i].name %>, </span>
+            <% } %>
+            <span><%= Object.values(clicked_country.currencies)[Object.values(clicked_country.currencies).length - 1].name %></span>
+          </li>
+          <li>
+            Languages:
+            <% for (let i = 0; i < Object.values(clicked_country.languages).length - 1; i++) { %>
+              <span><%= Object.values(clicked_country.languages)[i] %>, </span>
+            <% } %>
+            <span><%= Object.values(clicked_country.languages)[Object.values(clicked_country.languages).length - 1] %></span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="border-countries-container">
+        <div class="border-countries-label">Border Countries:</div>
+        <div class="border-countries-names">
+          <% border_countries.forEach(function(country) { %>
+            <a class="element-dark-mode" href="/detail/<%= country.cca2.toLowerCase() %>"><%= country.name.common %></a>
+          <% }); %>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<%- include("footer") -%>

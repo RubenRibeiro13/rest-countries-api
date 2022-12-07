@@ -1,0 +1,43 @@
+<%- include("header") -%>
+
+  <main class="main-section-home">
+    <form action="/home" method="post">
+      <input class="element-dark-mode text-input-dark-mode" type="text" name="country_field_text" value="<%= country_field_text %>" placeholder="Search for a country...">
+
+      <div class="regions-menu">
+        <button type="button" class="regions-menu-label element-dark-mode regions-menu-label-dark-mode">Filter by Region</button>
+
+        <ul class="regions-menu-options-list element-dark-mode">
+          <li><button class="regions-menu-option element-dark-mode regions-menu-option-dark-mode" type="button">Africa</button></li>
+          <li><button class="regions-menu-option element-dark-mode regions-menu-option-dark-mode" type="button">America</button></li>
+          <li><button class="regions-menu-option element-dark-mode regions-menu-option-dark-mode" type="button">Asia</button></li>
+          <li><button class="regions-menu-option element-dark-mode regions-menu-option-dark-mode" type="button">Europe</button></li>
+          <li><button class="regions-menu-option element-dark-mode regions-menu-option-dark-mode" type="button">Oceania</button></li>
+          <li><button class="regions-menu-option element-dark-mode regions-menu-option-dark-mode" type="button">All Regions</button></li>
+        </ul>
+      </div>
+      <input class="selected-region" type="hidden" name="selected_region" value="<%= selected_region %>">
+    </form>
+
+    <div class="filtered-countries-container">
+      <% filtered_countries.forEach(function(country) { %>
+        <div class="filtered-country element-dark-mode">
+          <a href="/detail/<%= country.cca2.toLowerCase() %>">
+            <img class="filtered-country-flag" src="<%= country.flags.png %>" alt="<%= country.name.common %> flag">
+          </a>
+
+          <div class="filtered-country-info">
+            <p class="filtered-country-name"><%= country.name.common %></p>
+
+            <ul>
+              <li>Population: <span><%= country.population %></span></li>
+              <li>Region: <span><%= country.region %></span></li>
+              <li>Capital: <span><%= country.capital[0] %></span></li>
+            </ul>
+          </div>
+        </div>
+      <% }); %>
+    </div>
+  </main>
+
+<%- include("footer") -%>
