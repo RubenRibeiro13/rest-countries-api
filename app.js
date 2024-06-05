@@ -19,7 +19,7 @@ app.get("/", function(req, res) {
 app.get("/home", function(req, res) {
   const url = "https://restcountries.com/v3.1/all?fields=flags,name,population,region,capital,cca2";
 
-  https.get(url, {timeout: 60000}, function(response) {
+  https.get(url, function(response) {
     let data = "";
 
     response.on("data", function(chunk) {
