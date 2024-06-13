@@ -5,4 +5,8 @@ This is a solution to the [REST Countries API with color theme switcher challeng
 ## Overview
 
 ### Links
-- Live Site URL: [https://rest-countries-filter.onrender.com/home](https://rest-countries-filter.onrender.com/home) (no longer working since external API is down)
+- Live Site URL: [https://rest-countries-filter.onrender.com/](https://rest-countries-filter.onrender.com/)
+
+## Notes
+- This website is hosted on [Render](https://render.com/). Since I'm using the free instance of Render, the website can take up to 50 seconds to load.
+- This website gets its data from the [REST Countries](https://restcountries.com/) API. If the website's not working, it might be because the API is down at the moment.
